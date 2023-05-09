@@ -5,15 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour{
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
+    public float stompMaxTime = 0.5f; //ammount of time the stomp influence circle will remain active for
+    public float instaDropFreezeTime = 1f;
+    public GameObject childObject; // Objeto hijo cuyo SpriteRenderer se modificara
+    public GameObject stompInfluence;
+    
     private bool isJumping = false;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
-    public GameObject childObject; // Objeto hijo cuyo SpriteRenderer se modificara
+    private float freezeTime = 0f;
+    private float stompTime = 0f;
     
     //Teclas
     public KeyCode instantDropKey = KeyCode.S;
-    public float instaDropFreezeTime = 1f;
-    private float freezeTime = 0f;
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +25,13 @@ public class PlayerController : MonoBehaviour{
     }
 
     void Update(){
+        //disable the stomp influence gameobject
+        if (stompTime > 0){
+            stompTime -= Time.deltaTime;
+            if (stompTime <= 0){
+                stompInfluence.SetActive(false);
+            }
+        }
         if (freezeTime > 0){
             //Freeze movement if we've just insta-dropped
             freezeTime -= Time.deltaTime;
@@ -64,6 +75,8 @@ public class PlayerController : MonoBehaviour{
             rb.velocity = Vector2.zero;
             rb.Sleep();
             freezeTime = instaDropFreezeTime;
+            stompInfluence.SetActive(true);
+            stompTime = stompMaxTime;
         }
     }
 }
