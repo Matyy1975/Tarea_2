@@ -24,6 +24,9 @@ public class JumpOnStomp : MonoBehaviour{
         if (!isJumping){
             rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
             isJumping = true;
+            //find and enable aimer child gameobject that'll rotate to define the angle of the kick
+            GameObject aimer = transform.Find("Aimer").gameObject;
+            aimer.SetActive(true);
         }
     }
     
@@ -31,6 +34,8 @@ public class JumpOnStomp : MonoBehaviour{
         //Check if jumping to prevent doublejumps later
         if (collision.gameObject.CompareTag("Ground")){
             isJumping = false;
+            GameObject aimer = transform.Find("Aimer").gameObject;
+            aimer.SetActive(false);
         }
     }
 }
