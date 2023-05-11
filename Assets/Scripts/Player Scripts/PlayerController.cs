@@ -126,5 +126,7 @@ public class PlayerController : MonoBehaviour
             DetectKick detectorScript = stomped[i].GetComponent<DetectKick>();
             detectorScript.Kicked();
         }
+        //flush the stored detected stomps to prevent multiple kicks
+        stomped.Clear();
     }
 }
