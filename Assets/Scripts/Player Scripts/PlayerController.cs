@@ -121,10 +121,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void Kick(){
-        Debug.Log("KICK");
         for(int i=0 ; i<stomped.Count ; i++) {
             //Send a signal to every stomped object to tell them they've been kicked
-            Debug.Log("attempted to kick " + stomped[i].name);
             DetectKick detectorScript = stomped[i].GetComponent<DetectKick>();
             detectorScript.Kicked();
         }

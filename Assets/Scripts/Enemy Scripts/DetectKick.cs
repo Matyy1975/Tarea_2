@@ -13,7 +13,11 @@ public class DetectKick : MonoBehaviour{
     void Update(){
     }
     
+    //When the player 'kicks' this GameObject, this'll be what decides which script to execute. (The intermediary is there so I can execute *different* scripts, without having to cast them all to a method (which I barely understand how to do))
     public void Kicked(){
-        Debug.Log(gameObject.name + " has been kicked!");
+        FlyOnKick kickScript = gameObject.GetComponent<FlyOnKick>();
+        if (kickScript != null){
+            kickScript.Execute();
+        }
     }
 }
