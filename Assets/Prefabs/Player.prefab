@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6713228398953820083}
   - component: {fileID: 3353972518508647553}
   - component: {fileID: 6991701736996970554}
+  - component: {fileID: 1613984704}
   m_Layer: 0
   m_Name: Stomp Influence
   m_TagString: Stomp
@@ -101,6 +102,18 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
+--- !u!114 &1613984704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7853062446033015253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50b7484ff50af34499dedcb406694b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8939757909238739843
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,3 +300,4 @@ MonoBehaviour:
   childObject: {fileID: 8939757909238739843}
   stompInfluence: {fileID: 7853062446033015253}
   instantDropKey: 115
+  kickKey: 122

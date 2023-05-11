@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour{
     
     //Teclas
     public KeyCode instantDropKey = KeyCode.S;
+    public KeyCode kickKey = KeyCode.Z;
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
@@ -55,6 +56,10 @@ public class PlayerController : MonoBehaviour{
             if (Input.GetKeyDown(instantDropKey) && airborne){
                 InstantDrop();
             }
+        }
+        //Check if we've kicked
+        if (Input.GetKeyDown(kickKey)){
+            Debug.Log("KICK");
         }
     }
 
