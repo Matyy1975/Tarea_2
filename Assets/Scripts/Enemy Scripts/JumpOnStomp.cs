@@ -33,9 +33,11 @@ public class JumpOnStomp : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D collision){
         //Check if jumping to prevent doublejumps later
         if (collision.gameObject.CompareTag("Ground")){
-            isJumping = false;
-            GameObject aimer = transform.Find("Aimer").gameObject;
-            aimer.SetActive(false);
+            if ((Mathf.Abs(collision.contacts[0].normal.y) >= 0.1f) && (collision.contacts[0].point.y < transform.position.y)){
+                isJumping = false;
+                GameObject aimer = transform.Find("Aimer").gameObject;
+                aimer.SetActive(false);
+            }
         }
     }
 }

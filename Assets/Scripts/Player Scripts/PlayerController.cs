@@ -83,32 +83,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
+    void OnCollisionEnter2D(Collision2D collision){
         //Ground here just means game Terrain, as in, not enemies or other elements. could be walls
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            if (Mathf.Abs(collision.contacts[0].normal.y) < 0.1f)
-            {
+        if (collision.gameObject.CompareTag("Ground")){
+            if (Mathf.Abs(collision.contacts[0].normal.y) < 0.1f){
                 // If the collision is with a wall, set the player as airborne
                 airborne = true;
-            }
-            else
-            {
+            }else{
                 airborne = false;
             }
         }
     }
-    void OnCollisionExit2D(Collision2D collision)
-    {
+    void OnCollisionExit2D(Collision2D collision){
         if (collision.gameObject.CompareTag("Ground"))
         {
             airborne = true;
         }
     }
 
-    void InstantDrop()
-    {
+    void InstantDrop(){
         // Cast a ray down to check for the ground below the player
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground"));
         // Check if the ray hit anything
