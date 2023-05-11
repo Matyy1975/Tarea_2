@@ -130,9 +130,17 @@ public class PlayerController : MonoBehaviour
 
     void Kick(){
         for(int i=0 ; i<stomped.Count ; i++) {
-            //Send a signal to every stomped object to tell them they've been kicked
-            DetectKick detectorScript = stomped[i].GetComponent<DetectKick>();
-            detectorScript.Kicked();
+            //Iterate through every stomped object
+            //First, determine if the player is facing them (the extra kicked variable is just for readability)
+            bool kicked = false;
+            if ((facingRight && (transform.position.x < stomped[i].transform.position.x)) || (!facingRight && (transform.position.x > stomped[i].transform.position.x))){
+                kicked = true;
+            }
+            //if so, then send the signal that they've been kicked
+            if (kicked) {
+                DetectKick detectorScript = stomped[i].GetComponent<DetectKick>();
+                detectorScript.Kicked();
+            }
         }
         //flush the stored detected stomps to prevent multiple kicks
         stomped.Clear();
