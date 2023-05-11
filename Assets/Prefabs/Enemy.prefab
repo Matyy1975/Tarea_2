@@ -290,3 +290,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793a67629cf67c044b248d8fc2844cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minAngle: 15
+  maxAngle: 90

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChangeAim : MonoBehaviour{
+    public float minAngle = 0f;
+    public float maxAngle = 90f;
     private float startVelocity = -1f;
     private float startAngle;
     private float endAngle;
@@ -37,11 +39,11 @@ public class ChangeAim : MonoBehaviour{
         //check if player is to the left or right. Adjust the angle accordingly.
         Transform playerTrans = GameObject.Find("Player").transform;
         if (playerTrans.position.x > transform.position.x){
-            startAngle = 90f;
-            endAngle = 0;
+            startAngle = maxAngle;
+            endAngle = minAngle;
         }else{
-            startAngle = -90f;
-            endAngle = 0;
+            startAngle = -maxAngle;
+            endAngle = -minAngle;
         }
         angle = startAngle;
         currentVelocity = startVelocity;
