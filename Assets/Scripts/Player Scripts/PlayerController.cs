@@ -48,6 +48,13 @@ public class PlayerController : MonoBehaviour
                 stompInfluence.SetActive(false);
             }
         }
+        //We fetch the input here so the player can flip even while frozen
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        if (horizontalInput < 0){
+            facingRight = false;
+        }else if (horizontalInput > 0){
+            facingRight = true;
+        }
         if (freezeTime > 0){
             //Freeze movement if we've just insta-dropped
             freezeTime -= Time.deltaTime;
@@ -59,15 +66,7 @@ public class PlayerController : MonoBehaviour
             }
         }else{
             // Movimiento horizontal
-            float horizontalInput = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
-            // Flip sprite renderer del objeto hijo
-            if (horizontalInput < 0){
-                facingRight = false;
-            }
-            else if (horizontalInput > 0){
-                facingRight = true;
-            }
             // Salto
             if (Input.GetButtonDown("Jump") && !airborne){
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
