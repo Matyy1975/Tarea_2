@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour{
     public GameObject childObject; // Objeto hijo cuyo SpriteRenderer se modificara
     public GameObject stompInfluence;
     
-    private bool isJumping = false;
+    private bool grounded = false;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private float freezeTime = 0f;
@@ -47,9 +47,9 @@ public class PlayerController : MonoBehaviour{
                 sr.flipX = false;
             }
             // Salto
-            if (Input.GetButtonDown("Jump") && !isJumping){
+            if (Input.GetButtonDown("Jump") && !grounded){
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                isJumping = true;
+                grounded = true;
             }
             // Instant drop
             if (Input.GetKeyDown(instantDropKey)){
@@ -60,7 +60,12 @@ public class PlayerController : MonoBehaviour{
 
     void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.CompareTag("Ground")){
-            isJumping = false;
+            grounded = false;
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision){
+        if (collision.gameObject.CompareTag("Ground")){
+            grounded = true;
         }
     }
 
