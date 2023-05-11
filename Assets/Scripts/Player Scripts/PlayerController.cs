@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private float freezeTime = 0f;
     private float stompTime = 0f;
+    private bool facingRight = true; //might sound obvious but when facingRight false, then we're facing Left
 
     //Teclas
     public KeyCode instantDropKey = KeyCode.S;
@@ -33,6 +34,13 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
+        //Change the scale depending on where we're facing
+        //Putting it here instead of where it changes allows us more modularity in the code
+        if (facingRight){
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }else{
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
         //disable the stomp influence gameobject
         if (stompTime > 0){
             stompTime -= Time.deltaTime;
@@ -55,10 +63,10 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
             // Flip sprite renderer del objeto hijo
             if (horizontalInput < 0){
-                sr.flipX = true;
+                facingRight = false;
             }
             else if (horizontalInput > 0){
-                sr.flipX = false;
+                facingRight = true;
             }
             // Salto
             if (Input.GetButtonDown("Jump") && !airborne){
