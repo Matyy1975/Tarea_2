@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour{
                 airborne = true;
             }
             // Instant drop
-            if (Input.GetKeyDown(instantDropKey)){
+            if (Input.GetKeyDown(instantDropKey) && airborne){
                 InstantDrop();
             }
         }
