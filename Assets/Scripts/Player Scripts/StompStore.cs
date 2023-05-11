@@ -4,6 +4,7 @@ using UnityEngine;
 
 //The purpose of this script is for the player to be able to remember all the enemies that were affected by the stomp the player does
 public class StompStore : MonoBehaviour{
+    public PlayerController playerScript;
     // Start is called before the first frame update
     void Start(){
         
@@ -15,6 +16,8 @@ public class StompStore : MonoBehaviour{
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        Debug.Log(other.name);
+        if(other.tag == "Enemy"){
+            playerScript.stomped.Add(other.gameObject);
+        }
     }
 }
