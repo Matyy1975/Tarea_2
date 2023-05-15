@@ -188,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimerObject: {fileID: 8789842011791110992}
-  kickForce: 5
+  kickForce: 25
 --- !u!1 &8466941493913604911
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,5 +318,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793a67629cf67c044b248d8fc2844cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAngle: 15
-  maxAngle: 90
+  minAngle: 90
+  maxAngle: 15
