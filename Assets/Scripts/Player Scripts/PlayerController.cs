@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision){
+    void OnCollisionStay2D(Collision2D collision){
         //Ground here just means game Terrain, as in, not enemies or other elements. could be walls
         if (collision.gameObject.CompareTag("Ground")){
             if (Mathf.Abs(collision.contacts[0].normal.y) < 0.1f){
