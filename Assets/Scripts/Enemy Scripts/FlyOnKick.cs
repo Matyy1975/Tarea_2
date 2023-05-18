@@ -23,6 +23,7 @@ public class FlyOnKick : MonoBehaviour{
         if (tagsToChange) {
             gameObject.tag = "Enemy";
             gameObject.layer = LayerMask.NameToLayer("Enemies");
+            tagsToChange = false;
         }
     }
 
@@ -31,6 +32,7 @@ public class FlyOnKick : MonoBehaviour{
         if (rb.gravityScale == 0){
             rb.gravityScale = backupGrav;
             //Set to change the tags next frame
+            tagsToChange = true;
         }
     }
     
