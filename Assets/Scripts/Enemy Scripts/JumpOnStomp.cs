@@ -27,13 +27,6 @@ public class JumpOnStomp : MonoBehaviour{
             //find and enable aimer child gameobject that'll rotate to define the angle of the kick
             GameObject aimer = transform.Find("Aimer").gameObject;
             aimer.SetActive(true);
-            FlyOnKick KickScript = GetComponent<FlyOnKick>();
-            KickScript.prevent = false;
-        }
-        else{
-            //if we have NOT bounced up as a result of the stomp, change a var to prevent you from being kicked
-            FlyOnKick KickScript = GetComponent<FlyOnKick>();
-            KickScript.prevent = true;
         }
     }
     

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5541825941416993570}
   - component: {fileID: 8436388255493451094}
   - component: {fileID: 207368787}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -189,7 +189,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimerObject: {fileID: 8789842011791110992}
   kickForce: 25
-  prevent: 0
 --- !u!1 &8466941493913604911
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8949593259362580942}
   - component: {fileID: 8434112649566022753}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3136428499372409788}
   - component: {fileID: 1664915341624943571}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Aimer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

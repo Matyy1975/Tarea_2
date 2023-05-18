@@ -19,9 +19,5 @@ public class DetectKick : MonoBehaviour{
         if (kickScript != null){
             kickScript.Execute();
         }
-        FreezeOnKick freezeScript = gameObject.GetComponent<FreezeOnKick>();
-        if (freezeScript != null){
-            freezeScript.Execute();
-        }
     }
 }

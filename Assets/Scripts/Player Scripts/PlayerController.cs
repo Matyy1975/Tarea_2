@@ -7,18 +7,15 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public float stompMaxTime = 0.5f; //ammount of time the stomp influence circle will remain active for
-    public float kickMaxTime = 0.5f; //ammount of time the kick influence circle will remain active for
     public float instaDropFreezeTime = 1f;
     public GameObject childObject; // Objeto hijo cuyo SpriteRenderer se modificara
     public GameObject stompInfluence;
-    public GameObject kickInfluence;
 
     private bool airborne = false;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private float freezeTime = 0f;
     private float stompTime = 0f;
-    private float kickTime = 0f;
     private bool facingRight = true; //might sound obvious but when facingRight false, then we're facing Left
 
     //Teclas
@@ -37,12 +34,12 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-        //disable kick influence gameobject
-        if (kickTime > 0){
-            kickTime -= Time.deltaTime;
-            if (kickTime <= 0){
-                kickInfluence.SetActive(false);
-            }
+        //Change the scale depending on where we're facing
+        //Putting it here instead of where it changes allows us more modularity in the code
+        if (facingRight){
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }else{
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         //disable the stomp influence gameobject
         if (stompTime > 0){
@@ -57,13 +54,6 @@ public class PlayerController : MonoBehaviour
             facingRight = false;
         }else if (horizontalInput > 0){
             facingRight = true;
-        }
-        //Change the scale depending on where we're facing
-        //Putting it here instead of where it changes allows us more modularity in the code
-        if (facingRight){
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        }else{
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         if (freezeTime > 0){
             //Freeze movement if we've just insta-dropped
@@ -115,7 +105,8 @@ public class PlayerController : MonoBehaviour
         // Cast a ray down to check for the ground below the player
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground"));
         // Check if the ray hit anything
-        if (hit.collider != null){
+        if (hit.collider != null)
+        {
             // Move the player to the closest ground position
             transform.position = new Vector3(transform.position.x, hit.point.y + GetComponent<BoxCollider2D>().size.y / 2f, transform.position.z);
             // Kill all velocity and forces acting on Player
@@ -129,10 +120,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //I'll have to rework this WHOLE FUCKING FUNCTION KILL ME AAAAAAAA
     void Kick(){
-        kickTime = kickMaxTime;
-        kickInfluence.SetActive(true);
         for(int i=0 ; i<stomped.Count ; i++) {
             //Iterate through every stomped object
             //First, determine if the player is facing them (the extra kicked variable is just for readability)
@@ -148,6 +136,5 @@ public class PlayerController : MonoBehaviour
         }
         //flush the stored detected stomps to prevent multiple kicks
         stomped.Clear();
-        //immediately unfreeze the player
     }
 }
