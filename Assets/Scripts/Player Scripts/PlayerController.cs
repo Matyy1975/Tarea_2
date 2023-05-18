@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float instaDropFreezeTime = 1f;
     public GameObject childObject; // Objeto hijo cuyo SpriteRenderer se modificara
     public GameObject stompInfluence;
+    public GameObject kickInfluence;
 
     private bool airborne = false;
     private Rigidbody2D rb;
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
+        //disable kick influence gameobject
+        kickInfluence.SetActive(false);
         //disable the stomp influence gameobject
         if (stompTime > 0){
             stompTime -= Time.deltaTime;
@@ -121,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
     //I'll have to rework this WHOLE FUCKING FUNCTION KILL ME AAAAAAAA
     void Kick(){
+        kickInfluence.SetActive(true);
         Debug.Log("Happened");
         for(int i=0 ; i<stomped.Count ; i++) {
             //Iterate through every stomped object
