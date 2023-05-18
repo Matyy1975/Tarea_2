@@ -9,6 +9,7 @@ public class FlyOnKick : MonoBehaviour{
     private float backupGrav;
     [HideInInspector]
     public bool prevent;
+    private bool tagsToChange = false;
     // Start is called before the first frame update
     void Start(){
         //get your own rigidbody into rb
@@ -18,23 +19,27 @@ public class FlyOnKick : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
-        
+        //change tag back to enemy so player gets hurt
+        if (tagsToChange) {
+            gameObject.tag = "Enemy";
+            gameObject.layer = LayerMask.NameToLayer("Enemies");
+        }
     }
-    
+
     //used to restore the object's gravity when it collides with anything
     void OnCollisionEnter2D (){
         if (rb.gravityScale == 0){
             rb.gravityScale = backupGrav;
-            //Change the tag back to enemy so player gets hurt
-            gameObject.tag = "Enemy";
+            //Set to change the tags next frame
         }
     }
     
     //Called when DetectKick decides that it has been kicked by the player
     public void Execute(){
         if (!prevent) {
-            //Change the tag to projectile so enemies get hurt
+            //Change the tag to projectile so enemies get hurt (and layer, cuz' unity is silly)
             gameObject.tag = "Projectile";
+            gameObject.layer = LayerMask.NameToLayer("Projectiles");
             //Get Zrotation from the aimer child gameobject
             Vector2 directionVect = aimerObject.transform.up.normalized;
             Vector2 forceVect = directionVect * kickForce;

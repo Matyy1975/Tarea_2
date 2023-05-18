@@ -13,8 +13,10 @@ public class DieOnTag : MonoBehaviour{
     }
 
     void OnCollisionEnter2D(Collision2D collision){
+        Debug.Log("Happened");
+        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.CompareTag(tagToKill)){
-            Destroy(gameObject,.03f);
+            Destroy(gameObject,.04f);
         }
     }
 }
