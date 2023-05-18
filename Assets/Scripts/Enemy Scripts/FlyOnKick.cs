@@ -25,12 +25,16 @@ public class FlyOnKick : MonoBehaviour{
     void OnCollisionEnter2D (){
         if (rb.gravityScale == 0){
             rb.gravityScale = backupGrav;
+            //Change the tag back to enemy so player gets hurt
+            gameObject.tag = "Enemy";
         }
     }
     
     //Called when DetectKick decides that it has been kicked by the player
     public void Execute(){
         if (!prevent) {
+            //Change the tag to projectile so enemies get hurt
+            gameObject.tag = "Projectile";
             //Get Zrotation from the aimer child gameobject
             Vector2 directionVect = aimerObject.transform.up.normalized;
             Vector2 forceVect = directionVect * kickForce;
