@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpForce = 5f;
     public float stompMaxTime = 0.5f; //ammount of time the stomp influence circle will remain active for
+    public float kickMaxTime = 0.5f; //ammount of time the kick influence circle will remain active for
     public float instaDropFreezeTime = 1f;
     public GameObject childObject; // Objeto hijo cuyo SpriteRenderer se modificara
     public GameObject stompInfluence;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer sr;
     private float freezeTime = 0f;
     private float stompTime = 0f;
+    private float kickTime = 0f;
     private bool facingRight = true; //might sound obvious but when facingRight false, then we're facing Left
 
     //Teclas
@@ -36,7 +38,12 @@ public class PlayerController : MonoBehaviour
 
     void Update(){
         //disable kick influence gameobject
-        kickInfluence.SetActive(false);
+        if (kickTime > 0){
+            kickTime -= Time.deltaTime;
+            if (kickTime <= 0){
+                kickInfluence.SetActive(false);
+            }
+        }
         //disable the stomp influence gameobject
         if (stompTime > 0){
             stompTime -= Time.deltaTime;
@@ -124,8 +131,8 @@ public class PlayerController : MonoBehaviour
 
     //I'll have to rework this WHOLE FUCKING FUNCTION KILL ME AAAAAAAA
     void Kick(){
+        kickTime = kickMaxTime;
         kickInfluence.SetActive(true);
-        Debug.Log("Happened");
         for(int i=0 ; i<stomped.Count ; i++) {
             //Iterate through every stomped object
             //First, determine if the player is facing them (the extra kicked variable is just for readability)
