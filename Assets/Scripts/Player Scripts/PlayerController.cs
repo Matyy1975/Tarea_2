@@ -105,8 +105,7 @@ public class PlayerController : MonoBehaviour
         // Cast a ray down to check for the ground below the player
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground"));
         // Check if the ray hit anything
-        if (hit.collider != null)
-        {
+        if (hit.collider != null){
             // Move the player to the closest ground position
             transform.position = new Vector3(transform.position.x, hit.point.y + GetComponent<BoxCollider2D>().size.y / 2f, transform.position.z);
             // Kill all velocity and forces acting on Player
@@ -120,7 +119,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //I'll have to rework this WHOLE FUCKING FUNCTION KILL ME AAAAAAAA
     void Kick(){
+        Debug.Log("Happened");
         for(int i=0 ; i<stomped.Count ; i++) {
             //Iterate through every stomped object
             //First, determine if the player is facing them (the extra kicked variable is just for readability)
@@ -136,5 +137,6 @@ public class PlayerController : MonoBehaviour
         }
         //flush the stored detected stomps to prevent multiple kicks
         stomped.Clear();
+        //immediately unfreeze the player
     }
 }
