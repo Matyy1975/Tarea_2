@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Stomp
   - Enemy
+  - Projectile
+  - Kick
   layers:
   - Default
   - TransparentFX
@@ -14,8 +16,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Enemies
+  - Projectiles
   - 
   - 
   - 
