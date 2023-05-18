@@ -34,13 +34,6 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-        //Change the scale depending on where we're facing
-        //Putting it here instead of where it changes allows us more modularity in the code
-        if (facingRight){
-            transform.localScale = new Vector3(1f, 1f, 1f);
-        }else{
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-        }
         //disable the stomp influence gameobject
         if (stompTime > 0){
             stompTime -= Time.deltaTime;
@@ -54,6 +47,13 @@ public class PlayerController : MonoBehaviour
             facingRight = false;
         }else if (horizontalInput > 0){
             facingRight = true;
+        }
+        //Change the scale depending on where we're facing
+        //Putting it here instead of where it changes allows us more modularity in the code
+        if (facingRight){
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }else{
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
         if (freezeTime > 0){
             //Freeze movement if we've just insta-dropped

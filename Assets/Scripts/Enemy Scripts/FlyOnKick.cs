@@ -7,6 +7,8 @@ public class FlyOnKick : MonoBehaviour{
     public float kickForce = 3f;
     private Rigidbody2D rb;
     private float backupGrav;
+    [HideInInspector]
+    public bool prevent;
     // Start is called before the first frame update
     void Start(){
         //get your own rigidbody into rb
@@ -28,15 +30,17 @@ public class FlyOnKick : MonoBehaviour{
     
     //Called when DetectKick decides that it has been kicked by the player
     public void Execute(){
-        //Get Zrotation from the aimer child gameobject
-        Vector2 directionVect = aimerObject.transform.up.normalized;
-        Vector2 forceVect = directionVect * kickForce;
-        //nullify all forces, then apply a force in that direction.
-        rb.velocity = Vector3.zero;
-        rb.AddForce(forceVect, ForceMode2D.Impulse);
-        aimerObject.SetActive(false);
-        //disable gravity so it flies in a straight line (and make sure to store a backup)
-        backupGrav = rb.gravityScale;
-        rb.gravityScale = 0;
+        if (!prevent) {
+            //Get Zrotation from the aimer child gameobject
+            Vector2 directionVect = aimerObject.transform.up.normalized;
+            Vector2 forceVect = directionVect * kickForce;
+            //nullify all forces, then apply a force in that direction.
+            rb.velocity = Vector3.zero;
+            rb.AddForce(forceVect, ForceMode2D.Impulse);
+            aimerObject.SetActive(false);
+            //disable gravity so it flies in a straight line (and make sure to store a backup)
+            backupGrav = rb.gravityScale;
+            rb.gravityScale = 0;
+        }
     }
 }

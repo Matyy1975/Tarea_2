@@ -381,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 8
-  stompMaxTime: 0.5
+  stompMaxTime: 0.1
   instaDropFreezeTime: 1
   childObject: {fileID: 8939757909238739843}
   stompInfluence: {fileID: 7853062446033015253}
