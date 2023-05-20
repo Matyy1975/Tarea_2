@@ -7,7 +7,9 @@ public class ControladorPersonaje : MonoBehaviour
     public string parametroIdle = "Idle";
     public string parametroJump = "Jump";
     public string parametroKick = "Kick";
+    public string parametroMove = "Move";
     private bool enElAire;
+    private bool saltando;
 
     void Update()
     {
@@ -17,6 +19,7 @@ public class ControladorPersonaje : MonoBehaviour
             // Detectar si se presiona la tecla "Space" para activar la animación de salto
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                saltando = true;
                 ActivarSalto(true);
             }
         }
@@ -25,28 +28,33 @@ public class ControladorPersonaje : MonoBehaviour
             // Detectar si se presiona la tecla "Space" para activar la animación de salto mientras está en el suelo
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                saltando = true;
                 ActivarSalto(true);
                 ActivarCaminar(false);
+                ActivarMove(false);
             }
         }
 
         // Detectar si se presiona la tecla "A" (izquierda)
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             ActivarCaminar(true);
+            ActivarMove(true);
         }
 
         // Detectar si se presiona la tecla "D" (derecha)
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             ActivarCaminar(true);
+            ActivarMove(true);
         }
 
         // Detectar si se suelta la tecla "A" o "D"
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
         {
             ActivarCaminar(false);
             ActivarIdle();
+            ActivarMove(false);
         }
 
         // Detectar si se presiona la tecla específica para activar la animación de patada
@@ -78,6 +86,11 @@ public class ControladorPersonaje : MonoBehaviour
     void ActivarSalto(bool activar)
     {
         animator.SetBool(parametroJump, activar);
+        if (!activar && saltando)
+        {
+            saltando = false;
+            ActivarMove(false);
+        }
     }
 
     void ActivarPatada()
@@ -91,6 +104,11 @@ public class ControladorPersonaje : MonoBehaviour
         animator.SetBool(parametroKick, false);
     }
 
+    void ActivarMove(bool activar)
+    {
+        animator.SetBool(parametroMove, activar);
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Suelo"))
@@ -100,13 +118,5 @@ public class ControladorPersonaje : MonoBehaviour
             ActivarIdle();
         }
     }
-
-    void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Suelo"))
-        {
-            enElAire = true;
-            ActivarSalto(true);
-        }
-    }
 }
+
