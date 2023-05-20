@@ -6,6 +6,7 @@ public class ControladorPersonaje : MonoBehaviour
     public string parametroCaminar = "Caminando";
     public string parametroIdle = "Idle";
     public string parametroJump = "Jump";
+    public string parametroKick = "Kick";
     private bool enElAire;
 
     void Update()
@@ -47,6 +48,18 @@ public class ControladorPersonaje : MonoBehaviour
             ActivarCaminar(false);
             ActivarIdle();
         }
+
+        // Detectar si se presiona la tecla específica para activar la animación de patada
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            ActivarPatada();
+        }
+
+        // Detectar si se suelta la tecla específica para desactivar la animación de patada
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            DesactivarPatada();
+        }
     }
 
     void ActivarCaminar(bool activar)
@@ -56,9 +69,10 @@ public class ControladorPersonaje : MonoBehaviour
 
     void ActivarIdle()
     {
-        animator.SetBool(parametroCaminar, false); // Asegurarse de desactivar la animación de caminar
-        animator.SetBool(parametroJump, false); // Asegurarse de desactivar la animación de salto
-        animator.Play(parametroIdle, -1, 0f); // Reproducir la animación de idle desde el inicio instantáneamente
+        animator.SetBool(parametroCaminar, false);
+        animator.SetBool(parametroJump, false);
+        animator.SetBool(parametroKick, false);
+        animator.Play(parametroIdle, -1, 0f);
     }
 
     void ActivarSalto(bool activar)
@@ -66,9 +80,19 @@ public class ControladorPersonaje : MonoBehaviour
         animator.SetBool(parametroJump, activar);
     }
 
+    void ActivarPatada()
+    {
+        animator.SetBool(parametroKick, true);
+        animator.Play(parametroKick, -1, 0f); // Reproducir la animación de patada desde el inicio instantáneamente
+    }
+
+    void DesactivarPatada()
+    {
+        animator.SetBool(parametroKick, false);
+    }
+
     void OnCollisionEnter(Collision collision)
     {
-        // Detectar si el personaje ha aterrizado en una superficie
         if (collision.gameObject.CompareTag("Suelo"))
         {
             enElAire = false;
@@ -79,7 +103,6 @@ public class ControladorPersonaje : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        // Detectar si el personaje ha dejado de estar en contacto con una superficie
         if (collision.gameObject.CompareTag("Suelo"))
         {
             enElAire = true;
