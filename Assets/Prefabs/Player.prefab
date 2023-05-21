@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2792825668682432830}
   - component: {fileID: 1464994903749161668}
   - component: {fileID: 6137546171721628435}
-  - component: {fileID: 950342647683761109}
+  - component: {fileID: 8673049052675413128}
   m_Layer: 0
   m_Name: Kick Influence
   m_TagString: Kick
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.49999997
---- !u!114 &950342647683761109
+--- !u!114 &8673049052675413128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2406919300203058971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d7c207d3447c6b4cb480dff6a751c82, type: 3}
+  m_Script: {fileID: 11500000, guid: 855fe44fe34b6464cbfe9a62ff60b988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7853062446033015253
@@ -310,7 +310,7 @@ SpriteRenderer:
   m_Size: {x: 8.6, y: 4.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8939757909238739843
