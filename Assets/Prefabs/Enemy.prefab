@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimerObject: {fileID: 8789842011791110992}
-  kickForce: 25
+  kickForce: 15
   prevent: 0
 --- !u!95 &1577932396
 Animator:
@@ -292,7 +292,7 @@ SpriteRenderer:
   m_Size: {x: 8.6, y: 4.7}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8789842011791110992

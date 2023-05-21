@@ -29,5 +29,6 @@ public class PrintCollisionTags : MonoBehaviour
             thisObjectName, thisObjectTag, otherObjectName, otherObjectTag);
 
         Debug.Log(message);
+        Debug.Log(collision.otherCollider);
     }
 }
