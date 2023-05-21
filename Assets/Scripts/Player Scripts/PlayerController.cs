@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private bool airborne = false;
     private Rigidbody2D rb;
-    private SpriteRenderer sr;
+    //private SpriteRenderer sr;
     private float freezeTime = 0f;
     private float stompTime = 0f;
     private float kickTime = 0f;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     void Start(){
         rb = GetComponent<Rigidbody2D>();
-        sr = childObject.GetComponent<SpriteRenderer>();
+        //sr = childObject.GetComponent<SpriteRenderer>();
         stomped = new List<GameObject>();
     }
 
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
             //flush the list of stomped enemies when the player becomes able to move again
             if (freezeTime <= 0){ 
                 //return the sprite to original color (again, for Debug Purposes)
-                sr.color = Color.white;
+                //sr.color = Color.white;
                 stomped.Clear();
             }
         }else{
@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
             rb.Sleep();
             freezeTime = instaDropFreezeTime;
             //make the sprite yellow, just for debug purposes
-            sr.color = Color.yellow;
+            //sr.color = Color.yellow;
             stompInfluence.SetActive(true);
             stompTime = stompMaxTime;
         }
