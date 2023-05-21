@@ -112,6 +112,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void InstantDrop(){
+        //flush the stored detected stomps
+        stomped.Clear();
         // Cast a ray down to check for the ground below the player
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground"));
         // Check if the ray hit anything
@@ -133,7 +135,7 @@ public class PlayerController : MonoBehaviour
     void Kick(){
         kickTime = kickMaxTime;
         kickInfluence.SetActive(true);
-        for(int i=0 ; i<stomped.Count ; i++) {
+        /*for(int i=0 ; i<stomped.Count ; i++) {
             //Iterate through every stomped object
             //First, determine if the player is facing them (the extra kicked variable is just for readability)
             bool kicked = false;
@@ -145,9 +147,7 @@ public class PlayerController : MonoBehaviour
                 DetectKick detectorScript = stomped[i].GetComponent<DetectKick>();
                 detectorScript.Kicked();
             }
-        }
-        //flush the stored detected stomps to prevent multiple kicks
-        stomped.Clear();
+        }*/
         //immediately unfreeze the player
     }
 }

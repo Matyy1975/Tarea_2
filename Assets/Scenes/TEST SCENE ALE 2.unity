@@ -637,26 +637,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -8780220738979309394, guid: 41e8c3f786f4fae4fa217f98ab8f7336, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8897011356567516404, guid: 41e8c3f786f4fae4fa217f98ab8f7336, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 1000252eb14301b4e9f7c0bf81eb9651, type: 2}
-    - target: {fileID: 0}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 1000252eb14301b4e9f7c0bf81eb9651, type: 2}
-    - target: {fileID: 0}
-      propertyPath: parametroInstantDrop
-      value: Instant Drop
-      objectReference: {fileID: 0}
     - target: {fileID: 8939757909919132714, guid: 41e8c3f786f4fae4fa217f98ab8f7336, type: 3}
       propertyPath: m_Name
       value: Player
