@@ -3,7 +3,6 @@ using UnityEngine;
 public class ControladorPersonaje : MonoBehaviour
 {
     public Animator animator;
-    public string parametroCaminar = "Caminando";
     public string parametroIdle = "Idle";
     public string parametroJump = "Jump";
     public string parametroKick = "Kick";
@@ -30,7 +29,6 @@ public class ControladorPersonaje : MonoBehaviour
             {
                 saltando = true;
                 ActivarSalto(true);
-                ActivarCaminar(false);
                 ActivarMove(false);
             }
         }
@@ -38,21 +36,18 @@ public class ControladorPersonaje : MonoBehaviour
         // Detectar si se presiona la tecla "A" (izquierda)
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            ActivarCaminar(true);
             ActivarMove(true);
         }
 
         // Detectar si se presiona la tecla "D" (derecha)
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            ActivarCaminar(true);
             ActivarMove(true);
         }
 
         // Detectar si se suelta la tecla "A" o "D"
         if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
         {
-            ActivarCaminar(false);
             ActivarIdle();
             ActivarMove(false);
         }
@@ -70,14 +65,8 @@ public class ControladorPersonaje : MonoBehaviour
         }
     }
 
-    void ActivarCaminar(bool activar)
-    {
-        animator.SetBool(parametroCaminar, activar);
-    }
-
     void ActivarIdle()
     {
-        animator.SetBool(parametroCaminar, false);
         animator.SetBool(parametroJump, false);
         animator.SetBool(parametroKick, false);
         animator.Play(parametroIdle, -1, 0f);
@@ -119,4 +108,3 @@ public class ControladorPersonaje : MonoBehaviour
         }
     }
 }
-
