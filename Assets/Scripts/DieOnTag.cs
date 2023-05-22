@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DieOnTag : MonoBehaviour{
     public string tagToKill;
+    public int timesToBeHit = 1;
     void Start(){
         
     }
@@ -14,7 +15,10 @@ public class DieOnTag : MonoBehaviour{
 
     void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.CompareTag(tagToKill)){
-            Destroy(gameObject,.04f);
+            timesToBeHit -= 1;
+            if (timesToBeHit == 0){
+                Destroy(gameObject,.04f);
+            }
         }
     }
 }

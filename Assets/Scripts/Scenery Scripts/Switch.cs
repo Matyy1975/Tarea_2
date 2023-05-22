@@ -19,8 +19,11 @@ public class Switch : MonoBehaviour{
     void activate(){
         SpawnPrefab spawnerScript = toAction.GetComponent<SpawnPrefab>();
         if (spawnerScript != null) {
-            Debug.Log("Happened");
-            spawnerScript.Disable();
+            if (spawnerScript.isSpawning){
+                spawnerScript.Disable();
+            }else{
+                spawnerScript.Enable();
+            }
         }
     }
     

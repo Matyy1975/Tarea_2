@@ -10,6 +10,7 @@ public class FlyOnKick : MonoBehaviour{
     [HideInInspector]
     public bool prevent;
     private bool tagsToChange = false;
+    private int ignoreCollisionFrames = 2;
     // Start is called before the first frame update
     void Start(){
         //get your own rigidbody into rb
@@ -19,20 +20,25 @@ public class FlyOnKick : MonoBehaviour{
 
     // Update is called once per frame
     void Update(){
+        if (rb.gravityScale == 0){
+            ignoreCollisionFrames -= 1;
+        }
         //change tag back to enemy so player gets hurt
         if (tagsToChange) {
             gameObject.tag = "Enemy";
             gameObject.layer = LayerMask.NameToLayer("Enemies");
             tagsToChange = false;
+            Destroy(gameObject,0.04f);
         }
     }
 
     //used to restore the object's gravity when it collides with anything
-    void OnCollisionEnter2D (){
-        if (rb.gravityScale == 0){
+    void OnCollisionEnter2D (Collision2D other){
+        if ((rb.gravityScale == 0)&&(ignoreCollisionFrames<=0)){
             rb.gravityScale = backupGrav;
             //Set to change the tags next frame
             tagsToChange = true;
+            ignoreCollisionFrames = 2;
         }
     }
     

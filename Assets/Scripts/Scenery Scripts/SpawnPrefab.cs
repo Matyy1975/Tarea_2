@@ -4,17 +4,20 @@ using UnityEngine;
 public class SpawnPrefab : MonoBehaviour{
     public GameObject prefabToSpawn;
     public float spawnInterval = 2f;
+    private float time = 0;
 
-    private bool isSpawning = true;
+    public bool isSpawning = true;
 
     private void Start(){
-        StartCoroutine(SpawnPrefabRepeatedly());
     }
-
-    private IEnumerator SpawnPrefabRepeatedly(){
-        while (isSpawning){
-            yield return new WaitForSeconds(spawnInterval);
-            Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+    
+    private void Update(){
+        if (isSpawning){
+            time += Time.deltaTime;
+            if (time >= spawnInterval){
+                time -= spawnInterval;
+                Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+            }
         }
     }
 
@@ -22,5 +25,11 @@ public class SpawnPrefab : MonoBehaviour{
         isSpawning = false;
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         sr.color = new Color(0,0,0,0.5f);
+    }
+    
+    public void Enable(){
+        isSpawning = true;
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.color = new Color(0,0,0,1f);
     }
 }
