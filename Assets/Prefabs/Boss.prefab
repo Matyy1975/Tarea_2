@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagToKill: Projectile
-  timesToBeHit: 1
+  timesToBeHit: 5
   parent: {fileID: 7753630675239204596}
 --- !u!95 &1264464707
 Animator:
