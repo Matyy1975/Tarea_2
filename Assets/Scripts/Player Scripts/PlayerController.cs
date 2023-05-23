@@ -12,13 +12,17 @@ public class PlayerController : MonoBehaviour
     public GameObject childObject; // Objeto hijo cuyo SpriteRenderer se modificara
     public GameObject stompInfluence;
     public GameObject kickInfluence;
-
-    private bool airborne = false;
+    [HideInInspector]
+    public bool walking = false;
+    [HideInInspector]
+    public bool airborne = false;
     private Rigidbody2D rb;
     //private SpriteRenderer sr;
-    private float freezeTime = 0f;
+    [HideInInspector]
+    public float freezeTime = 0f;
     private float stompTime = 0f;
-    private float kickTime = 0f;
+    [HideInInspector]
+    public float kickTime = 0f;
     private bool facingRight = true; //might sound obvious but when facingRight false, then we're facing Left
 
     //Teclas
@@ -53,10 +57,13 @@ public class PlayerController : MonoBehaviour
         }
         //We fetch the input here so the player can flip even while frozen
         float horizontalInput = Input.GetAxisRaw("Horizontal");
+        walking = false;
         if (horizontalInput < 0){
             facingRight = false;
+            walking = true;
         }else if (horizontalInput > 0){
             facingRight = true;
+            walking = true;
         }
         //Change the scale depending on where we're facing
         //Putting it here instead of where it changes allows us more modularity in the code
