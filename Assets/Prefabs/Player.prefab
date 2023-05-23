@@ -410,7 +410,6 @@ GameObject:
   - component: {fileID: 8939757909919132713}
   - component: {fileID: 8939757909919132725}
   - component: {fileID: -8780220738979309394}
-  - component: {fileID: 8897011356567516404}
   - component: {fileID: 1935467594}
   - component: {fileID: 1935467595}
   m_Layer: 0
@@ -506,6 +505,10 @@ MonoBehaviour:
   childObject: {fileID: 8939757909238739843}
   stompInfluence: {fileID: 7853062446033015253}
   kickInfluence: {fileID: 2406919300203058971}
+  walking: 0
+  airborne: 0
+  freezeTime: 0
+  kickTime: 0
   instantDropKey: 115
   kickKey: 122
   stomped: []
@@ -526,19 +529,7 @@ MonoBehaviour:
   parametroJump: Jump
   parametroKick: Kick
   parametroMove: Move
---- !u!114 &8897011356567516404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8939757909919132714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0ba83fe9692fc14a86ecaec16ccf70b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1935467595}
+  animState: 1
 --- !u!212 &1935467594
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -585,7 +576,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.4, y: 1}
+  m_Size: {x: 0.5, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
