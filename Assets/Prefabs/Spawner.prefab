@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 5541825941416993572, guid: 95037a7839f72d04f8d9fb41cc9463de, type: 3}
   spawnInterval: 10
+  isSpawning: 1
 --- !u!95 &1213423715
 Animator:
   serializedVersion: 5
