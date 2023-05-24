@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 8939757909919132713}
   - component: {fileID: 8939757909919132725}
   - component: {fileID: -8780220738979309394}
+  - component: {fileID: 8097811748558612201}
   - component: {fileID: 1935467594}
   - component: {fileID: 1935467595}
   m_Layer: 0
@@ -530,6 +531,20 @@ MonoBehaviour:
   parametroKick: Kick
   parametroMove: Move
   animState: 1
+--- !u!114 &8097811748558612201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939757909919132714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdd83479beaddc41b76970d02137c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToKill: Enemy
+  timesToBeHit: 1
 --- !u!212 &1935467594
 SpriteRenderer:
   m_ObjectHideFlags: 0
