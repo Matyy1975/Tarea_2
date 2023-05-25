@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 8939757909919132712}
   - component: {fileID: 8939757909919132713}
   - component: {fileID: 8939757909919132725}
+  - component: {fileID: 5340406629981362652}
   - component: {fileID: -8780220738979309394}
   - component: {fileID: 8097811748558612201}
   - component: {fileID: 1935467594}
@@ -477,8 +478,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 2
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: e44df59a224599544aa55986429d7323, type: 2}
@@ -498,8 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039d7a0f94fafb3428d7af2ccdb5a6b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  jumpForce: 8
+  moveSpeed: 20
+  jumpForce: 12
   stompMaxTime: 0.1
   kickMaxTime: 0.1
   instaDropFreezeTime: 0.8
@@ -513,6 +514,20 @@ MonoBehaviour:
   instantDropKey: 115
   kickKey: 122
   stomped: []
+--- !u!114 &5340406629981362652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939757909919132714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed806d635073e194d87c1e1b49e6ca8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  airDrag: 0
+  groundDrag: 2
 --- !u!114 &-8780220738979309394
 MonoBehaviour:
   m_ObjectHideFlags: 0

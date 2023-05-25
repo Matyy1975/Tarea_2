@@ -83,7 +83,11 @@ public class PlayerController : MonoBehaviour
             }
         }else{
             // Movimiento horizontal
-            rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+            if (!airborne){
+                Vector2 targetVelocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
+                Vector2 velocityChange = targetVelocity - rb.velocity;
+                rb.AddForce(velocityChange, ForceMode2D.Force);
+            }
             // Salto
             if (Input.GetButtonDown("Jump") && !airborne){
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
