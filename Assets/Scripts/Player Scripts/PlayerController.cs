@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool walking = false;
     [HideInInspector]
-    public bool airborne = false;
+    public bool airborne = true;
     private Rigidbody2D rb;
     //private SpriteRenderer sr;
     [HideInInspector]
@@ -120,6 +120,8 @@ public class PlayerController : MonoBehaviour
                 InstantDrop();
             }
         }
+        stomp = false;
+        jump = false;
     }
 
     void OnCollisionStay2D(Collision2D collision){
@@ -128,14 +130,15 @@ public class PlayerController : MonoBehaviour
             if (Mathf.Abs(collision.contacts[0].normal.y) < 0.1f){
                 // If the collision is with a wall, set the player as airborne
                 airborne = true;
-            }else{
+            }
+            else{
                 airborne = false;
             }
         }
     }
     void OnCollisionExit2D(Collision2D collision){
-        if (collision.gameObject.CompareTag("Ground"))
-        {
+        if (collision.gameObject.CompareTag("Ground")){
+            Debug.Log("ExitCollision");
             airborne = true;
         }
     }
@@ -148,7 +151,7 @@ public class PlayerController : MonoBehaviour
         // Check if the ray hit anything
         if (hit.collider != null){
             // Move the player to the closest ground position
-            transform.position = new Vector3(transform.position.x, hit.point.y + GetComponent<BoxCollider2D>().size.y / 2f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, hit.point.y + GetComponent<CapsuleCollider2D>().size.y / 2f, transform.position.z);
             // Kill all velocity and forces acting on Player
             rb.velocity = Vector2.zero;
             rb.Sleep();
