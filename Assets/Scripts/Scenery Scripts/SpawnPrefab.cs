@@ -23,13 +23,13 @@ public class SpawnPrefab : MonoBehaviour{
 
     public void Disable(){
         isSpawning = false;
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.color = new Color(0,0,0,0.5f);
+        //SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        //sr.color = new Color(0,0,0,0.5f);
     }
     
     public void Enable(){
         isSpawning = true;
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        sr.color = new Color(0,0,0,1f);
+        //SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        //sr.color = new Color(0,0,0,1f);
     }
 }
