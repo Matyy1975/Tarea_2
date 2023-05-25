@@ -19,7 +19,7 @@ public class FlyOnKick : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void Update(){
+    void FixedUpdate(){
         if (rb.gravityScale == 0){
             ignoreCollisionFrames -= 1;
         }

@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public float kickTime = 0f;
     private bool facingRight = true; //might sound obvious but when facingRight false, then we're facing Left
+    private float horizontalInput;
+    private bool jump = false;
+    private bool stomp = false;
 
     //Teclas
     public KeyCode instantDropKey = KeyCode.S;
@@ -41,6 +44,33 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
+        //For input detection
+        //We fetch the input here so the player can flip even while frozen
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        walking = false;
+        if (horizontalInput < 0)
+        {
+            facingRight = false;
+            walking = true;
+        }
+        else if (horizontalInput > 0)
+        {
+            facingRight = true;
+            walking = true;
+        }
+        if (Input.GetButtonDown("Jump")){
+            jump = true;
+        }
+        if (Input.GetKeyDown(instantDropKey)){
+            stomp = true;
+        }
+        //Check if we've kicked
+        if (Input.GetKeyDown(kickKey)){
+            Kick();
+        }
+    }
+
+    void FixedUpdate(){
         //disable kick influence gameobject
         if (kickTime > 0){
             kickTime -= Time.deltaTime;
@@ -54,16 +84,6 @@ public class PlayerController : MonoBehaviour
             if (stompTime <= 0){
                 stompInfluence.SetActive(false);
             }
-        }
-        //We fetch the input here so the player can flip even while frozen
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        walking = false;
-        if (horizontalInput < 0){
-            facingRight = false;
-            walking = true;
-        }else if (horizontalInput > 0){
-            facingRight = true;
-            walking = true;
         }
         //Change the scale depending on where we're facing
         //Putting it here instead of where it changes allows us more modularity in the code
@@ -89,18 +109,16 @@ public class PlayerController : MonoBehaviour
                 rb.AddForce(velocityChange, ForceMode2D.Force);
             }
             // Salto
-            if (Input.GetButtonDown("Jump") && !airborne){
+            if (jump && !airborne){
+                jump = false;
                 rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
                 airborne = true;
             }
             // Instant drop
-            if (Input.GetKeyDown(instantDropKey) && airborne){
+            if (stomp && airborne){
+                stomp = false;
                 InstantDrop();
             }
-        }
-        //Check if we've kicked
-        if (Input.GetKeyDown(kickKey)){
-            Kick();
         }
     }
 

@@ -17,7 +17,7 @@ public class AerialDrag : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void Update(){
+    void FixedUpdate(){
         if (playerScript.airborne){
             rb.drag = airDrag;
         }else{

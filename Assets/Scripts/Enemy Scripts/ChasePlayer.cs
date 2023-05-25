@@ -20,7 +20,7 @@ public class ChasePlayer : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update(){
+    void FixedUpdate(){
         if ((!freeze)&&(player != null)){
             //First thing: find out whether the player is to the left or the right of you.
             if (player.transform.position.x < transform.position.x){

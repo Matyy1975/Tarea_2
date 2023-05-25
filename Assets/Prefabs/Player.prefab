@@ -479,7 +479,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 2
-  m_LinearDrag: 2
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: e44df59a224599544aa55986429d7323, type: 2}
@@ -499,8 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039d7a0f94fafb3428d7af2ccdb5a6b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 20
-  jumpForce: 12
+  moveSpeed: 45
+  jumpForce: 15
   stompMaxTime: 0.1
   kickMaxTime: 0.1
   instaDropFreezeTime: 0.8
@@ -527,7 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   airDrag: 0
-  groundDrag: 2
+  groundDrag: 3
 --- !u!114 &-8780220738979309394
 MonoBehaviour:
   m_ObjectHideFlags: 0

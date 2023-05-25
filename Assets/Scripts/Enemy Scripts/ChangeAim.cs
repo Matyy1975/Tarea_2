@@ -17,7 +17,7 @@ public class ChangeAim : MonoBehaviour{
     }
 
     // Update is called once per frame
-    void Update(){
+    void FixedUpdate(){
         if (startVelocity != -1f){
             currentVelocity = rb.velocity.y;
             //Absolute Value that velocity!
