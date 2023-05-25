@@ -45,6 +45,7 @@ public class JumpOnStomp : MonoBehaviour{
             if ((Mathf.Abs(collision.contacts[0].normal.y) >= 0.1f) && (collision.contacts[0].point.y < transform.position.y)){
                 isJumping = false;
                 moveScript.freeze = false;
+                moveScript.freezeTime = -1f;
                 GameObject aimer = transform.Find("Aimer").gameObject;
                 aimer.SetActive(false);
             }

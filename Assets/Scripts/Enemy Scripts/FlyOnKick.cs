@@ -28,7 +28,7 @@ public class FlyOnKick : MonoBehaviour{
             gameObject.tag = "Enemy";
             gameObject.layer = LayerMask.NameToLayer("Enemies");
             tagsToChange = false;
-            Destroy(gameObject,0.04f);
+            Destroy(gameObject);
         }
     }
 
@@ -44,7 +44,7 @@ public class FlyOnKick : MonoBehaviour{
     
     //Called when DetectKick decides that it has been kicked by the player
     public void Execute(){
-        if (!prevent) {
+        if ((!prevent) && aimerObject.activeSelf) {
             //Change the tag to projectile so enemies get hurt (and layer, cuz' unity is silly)
             gameObject.tag = "Projectile";
             gameObject.layer = LayerMask.NameToLayer("Projectiles");

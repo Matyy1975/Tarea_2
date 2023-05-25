@@ -10,7 +10,8 @@ public class ChasePlayer : MonoBehaviour
     private Rigidbody2D rb;
     [HideInInspector]
     public bool freeze = false;
-    private float freezeTime = -1f;
+    [HideInInspector]
+    public float freezeTime = -1f;
     public float maxFreezeTime = 1f;
     // Start is called before the first frame update
     void Start(){

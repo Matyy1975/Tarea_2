@@ -138,7 +138,6 @@ public class PlayerController : MonoBehaviour
     }
     void OnCollisionExit2D(Collision2D collision){
         if (collision.gameObject.CompareTag("Ground")){
-            Debug.Log("ExitCollision");
             airborne = true;
         }
     }
