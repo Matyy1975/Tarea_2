@@ -12,47 +12,54 @@ public class BossMove : MonoBehaviour{
     private bool increasing = true;
     public float freezeTime = 3f;
     private float freeze = 0f;
+    public float hurtTime = 1f;
+    [HideInInspector]
+    public float currentHurtTime = -1f;
     // Start is called before the first frame update
     void Start(){}
 
     // Update is called once per frame
     void Update(){
-        if (freeze == 0f){
-            if (((lerpTime <= 1)&&increasing)||((lerpTime >= 0)&&!increasing)){
-                if (increasing){
-                    lerpTime += Time.deltaTime/timeTaken;
+        if(currentHurtTime <= 0) { 
+            if (freeze == 0f){
+                if (((lerpTime <= 1)&&increasing)||((lerpTime >= 0)&&!increasing)){
+                    if (increasing){
+                        lerpTime += Time.deltaTime/timeTaken;
+                    }else{
+                        lerpTime -= Time.deltaTime/timeTaken;
+                    }
                 }else{
-                    lerpTime -= Time.deltaTime/timeTaken;
+                    increasing = !increasing;
+                    currentLoop += 1;
+                    if (currentLoop == loops){
+                        freeze = freezeTime; 
+                        currentLoop = 0;
+                        GameObject spawnerToActivate;
+                        if (lerpTime >= 1f){
+                            spawnerToActivate = Point2.gameObject;
+                        }else{
+                            spawnerToActivate = Point1.gameObject;
+                        }
+                        spawnerToActivate.GetComponent<SpawnPrefab>().isSpawning = true;
+                        //spawnerToActivate.isSpawning = true;
+                    }
                 }
             }else{
-                increasing = !increasing;
-                currentLoop += 1;
-                if (currentLoop == loops){
-                    freeze = freezeTime; 
-                    currentLoop = 0;
-                    GameObject spawnerToActivate;
+                freeze -= Time.deltaTime;
+                if (freeze <= 0f){
+                    freeze = 0f;
+                    SpawnPrefab spawnerToDeactivate;
                     if (lerpTime >= 1f){
-                        spawnerToActivate = Point2.gameObject;
+                        spawnerToDeactivate = Point2.gameObject.GetComponent<SpawnPrefab>();
                     }else{
-                        spawnerToActivate = Point1.gameObject;
+                        spawnerToDeactivate = Point1.gameObject.GetComponent<SpawnPrefab>();
                     }
-                    spawnerToActivate.GetComponent<SpawnPrefab>().isSpawning = true;
-                    //spawnerToActivate.isSpawning = true;
+                    spawnerToDeactivate.isSpawning = false;
                 }
             }
         }else{
-            freeze -= Time.deltaTime;
-            if (freeze <= 0f){
-                freeze = 0f;
-                SpawnPrefab spawnerToDeactivate;
-                if (lerpTime >= 1f){
-                    spawnerToDeactivate = Point2.gameObject.GetComponent<SpawnPrefab>();
-                }else{
-                    spawnerToDeactivate = Point1.gameObject.GetComponent<SpawnPrefab>();
-                }
-                spawnerToDeactivate.isSpawning = false;
-            }
+            currentHurtTime -= Time.deltaTime;
         }
-        transform.position = Vector2.Lerp(Point1.position,Point2.position,lerpTime);
+        transform.position = Vector2.Lerp(Point1.position, Point2.position, lerpTime);
     }
 }

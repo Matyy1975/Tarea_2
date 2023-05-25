@@ -18,6 +18,11 @@ public class KillParentOnTag : MonoBehaviour{
     void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.CompareTag(tagToKill)){
             timesToBeHit -= 1;
+            //find the boss move script and execute hurt frames if able
+            BossMove bossScript = GetComponent<BossMove>();
+            if (bossScript != null) { 
+                bossScript.currentHurtTime = bossScript.hurtTime;
+            }
             if (timesToBeHit == 0){
                 Destroy(parent,.04f);
             }
