@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground")){
             PlatformEffector2D effector = collision.gameObject.GetComponent<PlatformEffector2D>();
 
-            if ((rb.velocity.y <= 0) || (effector == null && rb.velocity.y > 0))
+            if ((rb.velocity.y <= 0) || (effector == null && rb.velocity.y > 0)) //la linea magica del profe NO TOCAR
                 { 
                 if (Mathf.Abs(collision.contacts[0].normal.y) < 0.1f){
                     // If the collision is with a wall, set the player as airborne
