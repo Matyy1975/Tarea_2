@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DefaultCamera : MonoBehaviour
 {
-    public Transform player;
+    public Transform target;
     public float horizontalSmoothSpeed = 0.125f;
     public float verticalSmoothSpeed = 0.125f;
     public bool freezeHorizontal = false;
@@ -13,10 +13,12 @@ public class DefaultCamera : MonoBehaviour
     private Vector2 desiredPosition;
     private Vector2 smoothedPosition;
 
-    private void LateUpdate()
-    {
+    private void LateUpdate(){
         // Calculate the desired position with offset
-        desiredPosition = (Vector2)player.position;
+        if(target == null) {
+            return;
+        }
+        desiredPosition = (Vector2)target.position;
 
         // Smoothly transition to the desired position
         if (!freezeHorizontal) {

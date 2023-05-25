@@ -159,6 +159,8 @@ public class PlayerController : MonoBehaviour
             //sr.color = Color.yellow;
             stompInfluence.SetActive(true);
             stompTime = stompMaxTime;
+        }else{ 
+            Destroy(gameObject);
         }
     }
 
