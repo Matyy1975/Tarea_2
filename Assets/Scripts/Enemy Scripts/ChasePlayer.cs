@@ -7,7 +7,7 @@ public class ChasePlayer : MonoBehaviour
     public float speed = 1f;
     private bool facingRight = true;
     private GameObject player;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     [HideInInspector]
     public bool freeze = false;
     [HideInInspector]
@@ -17,7 +17,9 @@ public class ChasePlayer : MonoBehaviour
     void Start(){
         //Find the player GameObject
         player = GameObject.Find("Player");
-        rb = GetComponent<Rigidbody2D>();
+        if (rb == null){
+            rb = GetComponent<Rigidbody2D>();
+        }
     }
 
     // Update is called once per frame
