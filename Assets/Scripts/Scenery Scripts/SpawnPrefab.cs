@@ -8,11 +8,15 @@ public class SpawnPrefab : MonoBehaviour{
     public bool randomRotate = false;
 
     public bool isSpawning = true;
+    public Animator anim;
 
     private void Start(){
     }
     
     private void Update(){
+        if (anim != null){
+            anim.SetBool("Active", isSpawning);
+        }
         if (isSpawning){
             time += Time.deltaTime;
             if (time >= spawnInterval){
