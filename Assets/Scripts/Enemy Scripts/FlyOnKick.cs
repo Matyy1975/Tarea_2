@@ -11,6 +11,7 @@ public class FlyOnKick : MonoBehaviour{
     public bool prevent;
     private bool tagsToChange = false;
     private int ignoreCollisionFrames = 2;
+    public GameObject emitter;
     // Start is called before the first frame update
     void Start(){
         //get your own rigidbody into rb
@@ -46,6 +47,7 @@ public class FlyOnKick : MonoBehaviour{
     public void Execute(){
         if ((!prevent) && aimerObject.activeSelf) {
             //Change the tag to projectile so enemies get hurt (and layer, cuz' unity is silly)
+            emitter.SetActive(true);
             gameObject.tag = "Projectile";
             gameObject.layer = LayerMask.NameToLayer("Projectiles");
             //Get Zrotation from the aimer child gameobject
