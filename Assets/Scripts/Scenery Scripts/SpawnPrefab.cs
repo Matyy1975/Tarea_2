@@ -5,6 +5,7 @@ public class SpawnPrefab : MonoBehaviour{
     public GameObject prefabToSpawn;
     public float spawnInterval = 2f;
     private float time = 0;
+    public bool randomRotate = false;
 
     public bool isSpawning = true;
 
@@ -16,7 +17,11 @@ public class SpawnPrefab : MonoBehaviour{
             time += Time.deltaTime;
             if (time >= spawnInterval){
                 time -= spawnInterval;
-                Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+                if(!randomRotate){
+                    Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
+                }else{
+                    Instantiate(prefabToSpawn, transform.position, Quaternion.Euler(0f, 0f, Random.Range(0f, 360f)));
+                }
             }
         }
     }
