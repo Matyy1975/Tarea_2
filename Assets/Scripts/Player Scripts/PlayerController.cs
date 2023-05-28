@@ -166,8 +166,6 @@ public class PlayerController : MonoBehaviour
             if (numOfPoints > 0){
                 for (int i = 0; i < numOfPoints; i++){
                     Vector3 position = Vector3.Lerp(startPoint,endPoint,(float)i/(float)numOfPoints);
-                    Debug.Log(i/numOfPoints);
-                    Debug.Log (position);
                     Instantiate(afterImagePrefab,position,transform.rotation);
                 }
             }
