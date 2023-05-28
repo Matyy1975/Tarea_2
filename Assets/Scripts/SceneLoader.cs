@@ -8,6 +8,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene()
     {
+        Time.timeScale = 1f;  // Reanudar la escala de tiempo normal
         SceneManager.LoadScene(sceneName);
     }
 
