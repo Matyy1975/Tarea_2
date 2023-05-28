@@ -6,6 +6,8 @@ public class SpawnPrefab : MonoBehaviour{
     public float spawnInterval = 2f;
     private float time = 0;
     public bool randomRotate = false;
+    private float range = 0.15f;
+    public bool randomTime = false;
 
     public bool isSpawning = true;
     public Animator anim;
@@ -21,6 +23,9 @@ public class SpawnPrefab : MonoBehaviour{
             time += Time.deltaTime;
             if (time >= spawnInterval){
                 time -= spawnInterval;
+                if (randomTime){
+                    time += Random.Range(-range,range);
+                }
                 if(!randomRotate){
                     Instantiate(prefabToSpawn, transform.position, Quaternion.identity);
                 }else{
