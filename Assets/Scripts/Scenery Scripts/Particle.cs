@@ -8,6 +8,7 @@ public class Particle : MonoBehaviour{
     private float maxLife;
     private SpriteRenderer sr;
     private Vector3 startScale;
+    public float startAlpha = 1f;
     // Start is called before the first frame update
     void Start(){
         maxLife = life;
@@ -19,7 +20,7 @@ public class Particle : MonoBehaviour{
     void Update(){
         life -= Time.deltaTime;
         float normalizedLife = 1-(life/maxLife);
-        sr.color = new Color(1,1,1,Mathf.Lerp(1f,0f,normalizedLife));
+        sr.color = new Color(1,1,1,Mathf.Lerp(startAlpha,0f,normalizedLife));
         if (shrink){
             float scaleX = Mathf.Lerp(startScale.x, 0f, normalizedLife);
             float scaleY = Mathf.Lerp(startScale.y, 0f, normalizedLife);

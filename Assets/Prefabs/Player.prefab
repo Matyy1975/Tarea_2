@@ -501,6 +501,8 @@ MonoBehaviour:
   airborne: 0
   freezeTime: 0
   kickTime: 0
+  afterImageDistance: 0.5
+  afterImagePrefab: {fileID: 5614361790628370282, guid: 79da3436177fe8c43bf5a10ee12ecbb9, type: 3}
   instantDropKey: 115
   kickKey: 122
   stomped: []

@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private bool jump = false;
     private bool stomp = false;
+    public float afterImageDistance = 0.5f;
+    public GameObject afterImagePrefab;
 
     //Teclas
     public KeyCode instantDropKey = KeyCode.S;
@@ -156,7 +158,19 @@ public class PlayerController : MonoBehaviour
         // Check if the ray hit anything
         if (hit.collider != null){
             // Move the player to the closest ground position
+            Vector3 startPoint = transform.position;
             transform.position = new Vector3(transform.position.x, hit.point.y + GetComponent<CapsuleCollider2D>().size.y / 2f, transform.position.z);
+            Vector3 endPoint = transform.position;
+            float totalDistance = Vector3.Distance(startPoint, endPoint);
+            int numOfPoints = Mathf.FloorToInt(totalDistance/afterImageDistance);
+            if (numOfPoints > 0){
+                for (int i = 0; i < numOfPoints; i++){
+                    Vector3 position = Vector3.Lerp(startPoint,endPoint,(float)i/(float)numOfPoints);
+                    Debug.Log(i/numOfPoints);
+                    Debug.Log (position);
+                    Instantiate(afterImagePrefab,position,transform.rotation);
+                }
+            }
             // Kill all velocity and forces acting on Player
             rb.velocity = Vector2.zero;
             rb.Sleep();
@@ -169,7 +183,10 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
+    
+    
+    
     //I'll have to rework this WHOLE FUCKING FUNCTION KILL ME AAAAAAAA
     void Kick(){
         kickTime = kickMaxTime;
