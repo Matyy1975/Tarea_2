@@ -155,20 +155,13 @@ public class PlayerController : MonoBehaviour
         stomped.Clear();
         // Cast a ray down to check for the ground below the player
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground"));
+        Vector3 startPoint = transform.position;
+        Vector3 endPoint = transform.position;
         // Check if the ray hit anything
         if (hit.collider != null){
             // Move the player to the closest ground position
-            Vector3 startPoint = transform.position;
             transform.position = new Vector3(transform.position.x, hit.point.y + GetComponent<CapsuleCollider2D>().size.y / 2f, transform.position.z);
-            Vector3 endPoint = transform.position;
-            float totalDistance = Vector3.Distance(startPoint, endPoint);
-            int numOfPoints = Mathf.FloorToInt(totalDistance/afterImageDistance);
-            if (numOfPoints > 0){
-                for (int i = 0; i < numOfPoints; i++){
-                    Vector3 position = Vector3.Lerp(startPoint,endPoint,(float)i/(float)numOfPoints);
-                    Instantiate(afterImagePrefab,position,transform.rotation);
-                }
-            }
+            endPoint = transform.position;
             // Kill all velocity and forces acting on Player
             rb.velocity = Vector2.zero;
             rb.Sleep();
@@ -178,12 +171,18 @@ public class PlayerController : MonoBehaviour
             stompInfluence.SetActive(true);
             stompTime = stompMaxTime;
         }else{ 
+            endPoint = new Vector3(transform.position.x,transform.position.y - 300,transform.position.z);
             Destroy(gameObject);
         }
+        float totalDistance = Vector3.Distance(startPoint, endPoint);
+        int numOfPoints = Mathf.FloorToInt(totalDistance/afterImageDistance);
+        if (numOfPoints > 0){
+            for (int i = 0; i < numOfPoints; i++){
+                Vector3 position = Vector3.Lerp(startPoint,endPoint,(float)i/(float)numOfPoints);
+                Instantiate(afterImagePrefab,position,transform.rotation);
+            }
+        }
     }
-    
-    
-    
     
     //I'll have to rework this WHOLE FUCKING FUNCTION KILL ME AAAAAAAA
     void Kick(){
