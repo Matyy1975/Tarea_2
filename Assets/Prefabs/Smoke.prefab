@@ -98,3 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0.2
+  shrink: 1
+  startAlpha: 1
