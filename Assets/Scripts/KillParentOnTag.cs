@@ -28,4 +28,18 @@ public class KillParentOnTag : MonoBehaviour{
             }
         }
     }
+    
+    void OnTriggerEnter2D(Collider2D collision){
+        if (collision.tag == tagToKill){
+            timesToBeHit -= 1;
+            //find the boss move script and execute hurt frames if able
+            BossMove bossScript = GetComponent<BossMove>();
+            if (bossScript != null) { 
+                bossScript.currentHurtTime = bossScript.hurtTime;
+            }
+            if (timesToBeHit == 0){
+                Destroy(parent,.04f);
+            }
+        }
+    }
 }

@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision){
         //Ground here just means game Terrain, as in, not enemies or other elements. could be walls
-        if (collision.gameObject.CompareTag("Ground")){
+        if (collision.gameObject.CompareTag("Ground")||collision.gameObject.CompareTag("BRGround")){
             PlatformEffector2D effector = collision.gameObject.GetComponent<PlatformEffector2D>();
 
             if ((rb.velocity.y <= 0) || (effector == null && rb.velocity.y > 0)) //la linea magica del profe NO TOCAR
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     void OnCollisionExit2D(Collision2D collision){
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground")||collision.gameObject.CompareTag("BRGround"))
         {
             airborne = true;
         }
@@ -155,10 +155,14 @@ public class PlayerController : MonoBehaviour
         stomped.Clear();
         // Cast a ray down to check for the ground below the player
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("Ground"));
+        RaycastHit2D brhit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, LayerMask.GetMask("BRGround"));
         Vector3 startPoint = transform.position;
         Vector3 endPoint = transform.position;
         // Check if the ray hit anything
         if (hit.collider != null){
+            if ((brhit.collider != null)&&(hit.distance > brhit.distance)){
+                Destroy(brhit.transform.gameObject);
+            }
             // Move the player to the closest ground position
             transform.position = new Vector3(transform.position.x, hit.point.y + GetComponent<CapsuleCollider2D>().size.y / 2f, transform.position.z);
             endPoint = transform.position;

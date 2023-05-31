@@ -10,6 +10,8 @@ TagManager:
   - Projectile
   - Kick
   - Wall
+  - BRGround
+  - AfterImage
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - UI
   - Enemies
   - Projectiles
-  - 
+  - BRGround
   - 
   - 
   - 

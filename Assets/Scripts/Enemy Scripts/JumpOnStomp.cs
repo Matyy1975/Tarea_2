@@ -51,4 +51,10 @@ public class JumpOnStomp : MonoBehaviour{
             }
         }
     }
+    void OnCollisionExit2D(Collision2D collision){
+        //Check if jumping to prevent doublejumps later
+        if (collision.gameObject.CompareTag("Ground")){
+            isJumping = true;
+        }
+    }
 }
