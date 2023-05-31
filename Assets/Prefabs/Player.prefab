@@ -493,7 +493,7 @@ MonoBehaviour:
   jumpForce: 15
   stompMaxTime: 0.1
   kickMaxTime: 0.1
-  instaDropFreezeTime: 0.8
+  instaDropFreezeTime: 0.3
   childObject: {fileID: 0}
   stompInfluence: {fileID: 7853062446033015253}
   kickInfluence: {fileID: 2406919300203058971}
