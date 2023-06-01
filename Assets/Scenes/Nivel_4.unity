@@ -735,6 +735,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 9005663943848087003, guid: 99f61636023b73647bcb43f0755035a5, type: 3}
+      propertyPath: sceneName
+      value: Menu Principal
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 99f61636023b73647bcb43f0755035a5, type: 3}
 --- !u!1 &914044704 stripped
@@ -2134,6 +2138,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goalPrefab: {fileID: 914044704}
   boss: {fileID: 1366622003}
+--- !u!114 &1705044105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705044088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6390c1a54d1e8394ba38863c42cf32ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1857896011
 PrefabInstance:
   m_ObjectHideFlags: 0
