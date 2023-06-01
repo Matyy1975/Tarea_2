@@ -7924,8 +7924,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1215322141}
-  horizontalSmoothSpeed: 0.125
-  verticalSmoothSpeed: 0.125
+  horizontalSmoothSpeed: 0.625
+  verticalSmoothSpeed: 0.625
   freezeHorizontal: 1
   freezeVertical: 0
 --- !u!4 &1204330072 stripped

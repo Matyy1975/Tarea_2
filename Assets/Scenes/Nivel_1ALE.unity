@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1772870905}
-  horizontalSmoothSpeed: 0.01
+  horizontalSmoothSpeed: 0.05
   verticalSmoothSpeed: 0.001
   freezeHorizontal: 0
   freezeVertical: 1
@@ -4850,11 +4850,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639737, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: Hspeed
-      value: 0.005
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639737, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: Vspeed
-      value: 0.005
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639737, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: newTarget
@@ -5680,11 +5680,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639737, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: Hspeed
-      value: 0.005
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639737, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: Vspeed
-      value: 0.005
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639737, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: newTarget
@@ -6524,11 +6524,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639737, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: Hspeed
-      value: 0.005
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639737, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: Vspeed
-      value: 0.005
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639737, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: newTarget

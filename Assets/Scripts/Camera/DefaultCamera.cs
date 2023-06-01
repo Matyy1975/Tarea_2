@@ -13,7 +13,7 @@ public class DefaultCamera : MonoBehaviour
     private Vector2 desiredPosition;
     private Vector2 smoothedPosition;
 
-    private void LateUpdate(){
+    private void FixedUpdate(){
         // Calculate the desired position with offset
         if(target == null) {
             return;
