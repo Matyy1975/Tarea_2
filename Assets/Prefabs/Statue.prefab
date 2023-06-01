@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 9014825697252350744}
   - component: {fileID: 9014825697252350746}
   - component: {fileID: 8436388256207805399}
+  - component: {fileID: -522910665680947142}
   m_Layer: 6
   m_Name: Statue
   m_TagString: Enemy
@@ -240,6 +241,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tagToKill: Projectile
   timesToBeHit: 1
+--- !u!210 &-522910665680947142
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965094390835484010}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
 --- !u!1 &6943227979238434471
 GameObject:
   m_ObjectHideFlags: 0

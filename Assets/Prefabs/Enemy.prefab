@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5541825941416993570}
   - component: {fileID: 8436388255493451094}
   - component: {fileID: 207368787}
+  - component: {fileID: -5568774435399926150}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -159,6 +160,17 @@ MonoBehaviour:
   kickForce: 22
   prevent: 0
   emitter: {fileID: 8056282845743117869}
+--- !u!210 &-5568774435399926150
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5541825941416993572}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
 --- !u!1 &7701900437798195603
 GameObject:
   m_ObjectHideFlags: 0
