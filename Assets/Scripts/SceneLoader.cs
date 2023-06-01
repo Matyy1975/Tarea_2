@@ -30,6 +30,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene()
     {
+        Time.timeScale = 1f;
         fadeAnimator.SetBool("Fade", true);
         transitioning = true;
     }
