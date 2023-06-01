@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cddf5e3695dfc0449a1fc4ef394f1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToInstantiate: {fileID: 7051144071730853726, guid: 11655fe5d32a48f4cbcfda0c6e5836da, type: 3}
+  prefabToInstantiate: {fileID: 7051144071730853726, guid: bb1ab9999b5b94747afca7bad49c9297, type: 3}
 --- !u!95 &1935467595
 Animator:
   serializedVersion: 5

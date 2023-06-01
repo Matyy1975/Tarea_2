@@ -17,7 +17,7 @@ public class DieOnTag : MonoBehaviour{
         if (collision.gameObject.CompareTag(tagToKill)){
             timesToBeHit -= 1;
             if (timesToBeHit == 0){
-                Destroy(gameObject,.04f);
+                Destroy(gameObject);
             }
         }
     }
