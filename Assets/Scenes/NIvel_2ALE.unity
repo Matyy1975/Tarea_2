@@ -2869,7 +2869,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549076813}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 56.5419, y: 0.9001, z: 0.46710962}
+  m_LocalPosition: {x: 56.5419, y: 4.5296, z: 0.46710962}
   m_LocalScale: {x: 1.7427, y: 1.7427, z: 1.7427}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2922,7 +2922,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 7.391541, y: 14.979382}
+  m_Size: {x: 7.391541, y: 10.793661}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -6731,7 +6731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1317810847}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.39, y: -1.3511, z: 0.46710962}
+  m_LocalPosition: {x: 19.509, y: -1.3511, z: 0.46710962}
   m_LocalScale: {x: 2.0274, y: 2.0274, z: 2.0274}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6784,7 +6784,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 0.29487428, y: 0.8143538}
+  m_Size: {x: 0.41229188, y: 0.8143538}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -8143,7 +8143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719064181}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.131, y: -2.27, z: 0.46710962}
+  m_LocalPosition: {x: 15.2809, y: -2.27, z: 0.46710962}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8196,7 +8196,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 8.906272, y: 0.2563243}
+  m_Size: {x: 9.206098, y: 0.2563243}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -8417,7 +8417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639740, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 54.95
+      value: 56.95
       objectReference: {fileID: 0}
     - target: {fileID: 5702726089236639740, guid: 57160a929c4af9a4f818bcf7e5213451, type: 3}
       propertyPath: m_LocalPosition.y
