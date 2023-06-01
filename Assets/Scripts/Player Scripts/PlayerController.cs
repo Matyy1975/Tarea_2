@@ -176,6 +176,7 @@ public class PlayerController : MonoBehaviour
             stompTime = stompMaxTime;
         }else{ 
             endPoint = new Vector3(transform.position.x,transform.position.y - 300,transform.position.z);
+            transform.position = endPoint;
             Destroy(gameObject);
         }
         float totalDistance = Vector3.Distance(startPoint, endPoint);
