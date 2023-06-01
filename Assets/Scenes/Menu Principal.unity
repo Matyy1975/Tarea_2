@@ -385,6 +385,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fade
       objectReference: {fileID: 0}
+    - target: {fileID: 3448265543078673276, guid: 30a351abee89cd04cb0698cb1711f7c0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3448265543078673279, guid: 30a351abee89cd04cb0698cb1711f7c0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -590,7 +594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -345.54, y: -234.5}
+  m_AnchoredPosition: {x: -333, y: -234.5}
   m_SizeDelta: {x: 231.9113, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &552192442
